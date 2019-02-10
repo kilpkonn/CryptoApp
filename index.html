@@ -497,7 +497,7 @@
             };
 
             let result;
-            for(let i = 0; i < 8 && !found; i++) { // Max 8 characters.
+            for(let i = 0; i < 6 && !found; i++) { // Max 6 characters.
                 document.getElementById("output").innerText = "Checking codes with " + i + " characters...";
                 result = loop(i, '', string.length);
             }
