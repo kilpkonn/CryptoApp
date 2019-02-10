@@ -479,23 +479,28 @@
         {
             let found = false;
             let next;
-            let loop = function (start, depth, prefix)
+            let loop = function (depth, prefix)
             {
-                for(let i=  start; i < string.length && !found; i++)
+                for(let i = 0; i < string.length && !found; i++)
                 {
                     next = prefix + string[i];
                     if (depth > 0)
-                        loop(i + 1, depth - 1, next);
+                        loop(depth - 1, next);
                     else if (hash === md5(next)){
                         found = true;
-                        return next
                     }
                 }
-                return next;
+                if (found)
+                    return next;
+                else
+                    return "Unable to crack.";
             };
 
             let result;
-            for(let i = 0; i < string.length && !found; i++) result = loop(0, i, '');
+            for(let i = 0; i < 8 && !found; i++) { // Max 8 characters.
+                document.getElementById("output").value = "Checking codes with " + i + " characters...";
+                result = loop(i, '');
+            }
             return result;
         }
     </script>
@@ -524,8 +529,6 @@
         
         function md5_decrypt() {
             const hash = document.getElementById("input").value;
-            document.getElementById("output").value = "Working...";
-            console.log(hash);
             document.getElementById("output").value = try_combinations("abcdefghijklmnopqrstuvwxyz", hash);
         }
     </script>
