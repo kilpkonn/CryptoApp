@@ -497,7 +497,7 @@
             };
 
             let result;
-            for(let i = 0; i < 5 && !found; i++) { // Max 6 characters.
+            for(let i = 0; i < 5 && !found; i++) { // Max 5 characters.
                 //document.getElementById("output").innerText = "Checking codes with " + i + " characters...";
                 result = loop(i, '', string.length);
             }
@@ -506,8 +506,9 @@
     </script>
     <script>
         function otp(encode) {
-            const input = document.getElementById("input").innerText;
-            const key = document.getElementById("key").innerText;
+            const input = document.getElementById("input").value;
+            const key = document.getElementById("key").value;
+            console.log(input);
 
             if (key.length < input.length){
                 alert("Key is too short, must be at least the length of input");
@@ -519,17 +520,17 @@
                 encoded.push(String.fromCharCode((input.charCodeAt(i) + key.charCodeAt(i) * (encode ? 1 : -1)) %
                     65536));
             }
-            document.getElementById("output").innerText = encoded.join("");
+            document.getElementById("output").value = encoded.join("");
         }
 
         function sha512() {
-            const input = document.getElementById("input").innerText;
-            document.getElementById("output").innerText = Sha512.hash(input).toString();
+            const input = document.getElementById("input").value;
+            document.getElementById("output").value = Sha512.hash(input).toString();
         }
         
         function md5_decrypt() {
-            const hash = document.getElementById("input").innerText;
-            document.getElementById("output").innerText = try_combinations("abcdefghijklmnopqrstuvwxyz", hash);
+            const hash = document.getElementById("input").value;
+            document.getElementById("output").value = try_combinations("abcdefghijklmnopqrstuvwxyz", hash);
         }
     </script>
 </head>
