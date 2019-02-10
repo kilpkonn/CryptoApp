@@ -9,8 +9,8 @@ function crack_hash(hash, log_container) {
         log_container.value += m + '\n';
     }
     function status(m) {
-        log_container.value = log_container.value.replace(/\r.*\r$/, '');
-        log_container.value += m + '\r';
+        log_container.value = log_container.value.replace(/Status[^\n]*\n$/, '');
+        log_container.value += "Status: " + m + '\n';
     }
     log("Starting workers (" + numWorkers + ")!");
 
@@ -24,7 +24,7 @@ function crack_hash(hash, log_container) {
         worker.addEventListener('message', function (e) {
             switch (e.data.cmd) {
                 case "status":
-                    status("Status: " + e.data.data);
+                    status(e.data.data);
                     break;
 
                 case "log":
@@ -32,13 +32,14 @@ function crack_hash(hash, log_container) {
                     break;
 
                 case "setRate":
+                    status(addCommasToInteger(e.data.data) + " passwords/second", e.data.id)
                     break;
 
                 case "foundPassword":
                     log("FOUND PASSWORD: " + e.data.data);
 
                     const totalTime = (+new Date - startTime) / 1000;
-                    log("TOTAL TIME: " + totalTime + " seconds");
+                    log("TOTAL TIME: " + totalTime + " seconds.");
 
                     workers.forEach(function (worker) {
                         worker.terminate()
@@ -65,4 +66,13 @@ function crack_hash(hash, log_container) {
         // Start worker
         worker.postMessage({cmd: "performCrack", data: {start: i, hop: numWorkers}})
     }
+}
+
+function addCommasToInteger(x) {
+    x = parseInt(x) + '';
+    let rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x)) {
+        x = x.replace(rgx, '$1' + ',' + '$2')
+    }
+    return x
 }
