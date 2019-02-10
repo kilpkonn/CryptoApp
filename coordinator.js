@@ -1,9 +1,10 @@
 /*Code from https://github.com/feross/md5-password-cracker.js*/
-var numWorkers = 8; // NOTE: can't set this to be more than 8 without fixing the way numbers are carried
-var workers = [];
-var startTime = +new Date;
+const numWorkers = 8; // NOTE: can't set this to be more than 8 without fixing the way numbers are carried
+let workers = [];
+let startTime;
 
 function crack_hash(hash, log_container) {
+    startTime = + new Date;
     function log(m) {
         log_container.value += m + '\n';
     }
