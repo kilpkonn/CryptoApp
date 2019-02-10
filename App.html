@@ -16,6 +16,24 @@
             vertical-align: bottom;
         }
     </style>
+    <script>
+        function otp(encode) {
+            const input = document.getElementById("input").value;
+            const key = document.getElementById("key").value;
+
+            if (key.length < input.length){
+                alert("Key is too short, must be at least the length of input");
+                return;
+            }
+
+            let encoded = [];
+            for (let i = 0; i < input.length; i++){
+                encoded.push(String.fromCharCode((input.charCodeAt(i) + key.charCodeAt(i) * (encode ? 1 : -1)) %
+                    65536));
+            }
+            document.getElementById("output").value = encoded.join("");
+        }
+    </script>
 </head>
 <body>
     <div id="div_image">
@@ -30,8 +48,8 @@
         <textarea id="key" rows="1" cols="75" style=" display: inline">Key here!</textarea>
     </div>
     <div class="inline">
-        <button>OTP-encrypt</button>
-        <button>OTP-decrypt</button>
+        <button onclick="otp(true)">OTP-encrypt</button>
+        <button onclick="otp(false)">OTP-decrypt</button>
         <button>SHA-2</button>
         <button>MD5 decrypt</button>
     </div>
@@ -39,7 +57,5 @@
         <h4>Output:</h4>
         <textarea id="output" rows="10" cols="80">Output...</textarea>
     </div>
-
-
 </body>
 </html>
