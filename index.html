@@ -294,36 +294,6 @@
         //export default Sha512;
     </script>
     <script>
-        function try_combinations(string, hash)
-        {
-            let found = false;
-            let next;
-            let loop = function (depth, prefix, s_length)
-            {
-                for(let i = 0; i < s_length && !found; i++)
-                {
-                    next = prefix + string[i];
-                    if (depth > 0)
-                        loop(depth - 1, next, s_length);
-                    else if (hash === md5(next)){
-                        found = true;
-                    }
-                }
-                if (found)
-                    return next;
-                else
-                    return "Unable to crack.";
-            };
-
-            let result;
-            for(let i = 0; i < 5 && !found; i++) { // Max 5 characters.
-                //document.getElementById("output").innerText = "Checking codes with " + i + " characters...";
-                result = loop(i, '', string.length);
-            }
-            return result;
-        }
-    </script>
-    <script>
         function otp(encode) {
             const input = document.getElementById("input").value;
             const key = document.getElementById("key").value;
