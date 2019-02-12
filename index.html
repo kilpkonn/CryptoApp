@@ -3,23 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Crypto Äpp</title>
-    <style>
-        div {
-            width:100%;
-            text-align:center;
-            padding-top: 5px;
-        }
-        img {
-            padding: 15px;
-            object-fit: cover;
-        }
-        textarea {
-            border-color: #FE5858;
-            border-image: none;
-            border-radius: 3px 3px 3px 3px;
-            vertical-align: bottom;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
     <script src="md5.js"></script>
     <script src="coordinator.js"></script>
     <script>
@@ -325,16 +309,17 @@
     </script>
 </head>
 <body>
+<div class="app" align="center">
     <div id="div_image">
         <img id=image" src="image.jpg">
     </div>
     <div>
         <h4>Input:</h4>
-        <textarea id="input" rows="10" cols="80" placeholder="Input"></textarea>
+        <textarea id="input" placeholder="Input"></textarea>
     </div>
-    <div class="inline">
-        <h4 style=" display: inline">Key:</h4>
-        <textarea id="key" rows="1" cols="75" style=" display: inline" placeholder="Key here!"></textarea>
+    <div>
+        <h4>Key:</h4>
+        <textarea id="key" placeholder="Key here!"></textarea>
     </div>
     <div class="inline">
         <button onclick="otp(true)">OTP-encrypt</button>
@@ -344,7 +329,8 @@
     </div>
     <div>
         <h4>Output:</h4>
-        <textarea readonly id="output" rows="10" cols="80" placeholder="Output..."></textarea>
+        <textarea readonly id="output" placeholder="Output..."></textarea>
     </div>
+</div>
 </body>
 </html>

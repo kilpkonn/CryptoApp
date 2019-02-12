@@ -1,0 +1,46 @@
+body {
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+div {
+    width:95%;
+    text-align:center;
+    padding-top: 5px;
+    padding-bottom: 5p
+;
+}
+img {
+    padding: 15px;
+    object-fit: cover;
+}
+textarea {
+    border-color: #FE5858;
+    border-image: none;
+    width: 95%;
+    border-radius: 3px 3px 3px 3px;
+    height: 100px;
+}
+div.app {
+    min-width: 670px;
+    width: 50%;
+    border-color: #FE5858;
+    border-image: none;
+    border-radius: 3px 3px 3px 3px;
+    align-self: center;
+    display: inline-block;
+}
+button {
+    background-color: dimgray;
+    border: none;
+    color: whitesmoke;
+    padding: 16px 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bolder;
+    box-shadow: black;
+}
+button:hover {
+    background-color: #FE5858;
+}
