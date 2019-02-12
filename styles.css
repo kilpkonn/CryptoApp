@@ -8,11 +8,13 @@ div {
     width:95%;
     text-align:center;
     padding-top: 5px;
-    padding-bottom: 5p
-;
+    padding-bottom: 5p;
+}
+h4 {
+    font-size: 18px;
 }
 img {
-    padding: 15px;
+    padding: 5px;
     object-fit: cover;
 }
 textarea {
