@@ -2,6 +2,7 @@ body {
     text-align: center;
     align-content: center;
     align-items: center;
+    background-color: darkgray;
 }
 div {
     width:95%;
@@ -18,17 +19,23 @@ textarea {
     border-color: #FE5858;
     border-image: none;
     width: 95%;
-    border-radius: 3px 3px 3px 3px;
+    border-radius: 5px 5px 5px 5px;
     height: 100px;
+    background-color: #ECECEC;
+    transition-duration: 1.5s;
+}
+textarea:hover {
+    background-color: #FFF0ED;
 }
 div.app {
     min-width: 670px;
     width: 50%;
-    border-color: #FE5858;
-    border-image: none;
-    border-radius: 3px 3px 3px 3px;
+    border: solid black;
+    background-color: white;
+    border-radius: 25px;
     align-self: center;
     display: inline-block;
+    padding: 5px;
 }
 button {
     background-color: dimgray;
